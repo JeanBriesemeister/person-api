@@ -1,4 +1,4 @@
-package com.jean.springframework.enums;
+package com.jean.springframework.domain.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

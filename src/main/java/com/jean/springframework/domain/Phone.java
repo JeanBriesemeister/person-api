@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.jean.springframework.enums.PhoneType;
+import com.jean.springframework.domain.enums.PhoneType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
