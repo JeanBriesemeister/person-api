@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +30,14 @@ public class PersonResource {
 	public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO) {
 		return personService.createPerson(personDTO);
 	}
-	
+
 	@GetMapping
-	public List<PersonDTO> listAll(){
+	public List<PersonDTO> listAll() {
 		return personService.listAll();
+	}
+
+	@GetMapping("/{id}")
+	public PersonDTO findById(@PathVariable Long id) {
+		return personService.findById(id);
 	}
 }

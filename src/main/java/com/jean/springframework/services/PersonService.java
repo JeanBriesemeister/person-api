@@ -22,11 +22,11 @@ public class PersonService {
 
 	private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-	public Person findById(Long id) {
+	public PersonDTO findById(Long id) {
 		Optional<Person> obj = personRepository.findById(id);
 
-		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Object not found! Id: " + id + ", Class: " + Person.class.getName()));
+		return personMapper.toDTO(obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Object not found! Id: " + id + ", Class: " + Person.class.getName())));
 	}
 
 	public MessageResponseDTO createPerson(PersonDTO personDTO) {
