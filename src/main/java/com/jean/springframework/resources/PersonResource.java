@@ -20,11 +20,13 @@ import com.jean.springframework.dto.MessageResponseDTO;
 import com.jean.springframework.dto.PersonDTO;
 import com.jean.springframework.services.PersonService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
 @RequestMapping(value = "/api/v1/person")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonResource {
 
-	@Autowired
 	private PersonService personService;
 
 	@PostMapping

@@ -16,10 +16,12 @@ import com.jean.springframework.mapper.PersonMapper;
 import com.jean.springframework.repositories.PersonRepository;
 import com.jean.springframework.services.exception.ObjectNotFoundException;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonService {
 
-	@Autowired
 	private PersonRepository personRepository;
 
 	private final PersonMapper personMapper = PersonMapper.INSTANCE;
