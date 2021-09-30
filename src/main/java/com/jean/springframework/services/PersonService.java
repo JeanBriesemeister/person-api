@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +34,7 @@ public class PersonService {
 	public MessageResponseDTO createPerson(PersonDTO personDTO) {
 		Person savedPerson = personRepository.save(personMapper.toModel(personDTO));
 
-		return MessageResponseDTO.builder().message("Create person with ID " + savedPerson.getId()).build();
+		return createMessageResponse(savedPerson.getId(), "Create person with ID ");
 	}
 
 	public List<PersonDTO> listAll() {
@@ -43,5 +45,18 @@ public class PersonService {
 
 	public void deleteById(Long id) {
 		personRepository.deleteById(findById(id).getId());
+	}
+
+	public MessageResponseDTO updateById(Long id, @Valid PersonDTO personDTO) {
+		PersonDTO personDTOPersisted = findById(id);
+		personDTO.setId(personDTOPersisted.getId());
+
+		Person updatedPerson = personRepository.save(personMapper.toModel(personDTO));
+
+		return createMessageResponse(updatedPerson.getId(), "Updated person with ID ");
+	}
+
+	private MessageResponseDTO createMessageResponse(Long id, String message) {
+		return MessageResponseDTO.builder().message(message + id).build();
 	}
 }
