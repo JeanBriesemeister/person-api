@@ -40,4 +40,8 @@ public class PersonService {
 
 		return allPeople.stream().map(personMapper::toDTO).collect(Collectors.toList());
 	}
+
+	public void deleteById(Long id) {
+		personRepository.deleteById(findById(id).getId());
+	}
 }
