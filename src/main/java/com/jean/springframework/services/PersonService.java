@@ -33,10 +33,10 @@ public class PersonService {
 				"Object not found! Id: " + id + ", Class: " + Person.class.getName())));
 	}
 
-	public MessageResponseDTO createPerson(PersonDTO personDTO) {
+	public MessageResponseDTO create(PersonDTO personDTO) {
 		Person savedPerson = personRepository.save(personMapper.toModel(personDTO));
 
-		return createMessageResponse(savedPerson.getId(), "Create person with ID ");
+		return createMessageResponse(savedPerson.getId(), "Created person with ID ");
 	}
 
 	public List<PersonDTO> listAll() {
